@@ -5,6 +5,8 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import AppServerModule from './src/main.server';
 
+
+
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
@@ -44,6 +46,11 @@ export function app(): express.Express {
 }
 
 function run(): void {
+
+  if (typeof window !== "undefined") {
+    // browser code
+ }
+
   const port = process.env['SSR_PORT'] || 4000;
 
   // Start up the Node server
